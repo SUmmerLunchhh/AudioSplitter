@@ -17,7 +17,10 @@ A modern desktop-class AI audio processing studio built with **PyQt6**, **Demucs
 - **🔍 System Audio Recognition**: Integrated with `sounddevice` and the AudD API to capture and identify computer audio in real time.
 - **💻 Built-in Terminal**: An embedded, persistent, semi-transparent PowerShell terminal with smart path shortening.
 - **🎨 Aesthetic Design**: Supports Gaussian blur/frosted glass effects, dynamic backgrounds, and custom UI skins.
-- <img src="https://github.com/SUmmerLunchhh/AAA-/blob/main/imgs/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202026-09-13%20124344.png" height="200">
+- <p align="center">
+  <img src="https://raw.githubusercontent.com/SUmmerLunchhh/AAA-/main/imgs/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202026-09-13%20124344.png" width="48%" />
+  <img src="https://raw.githubusercontent.com/SUmmerLunchhh/AAA-/main/imgs/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202026-09-13%20124404.png" width="48%" />
+</p>
 - **🚀 Borderless Interactive Experience**: Custom window controls with smooth window dragging support.
 
 ---
