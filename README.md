@@ -1,5 +1,5 @@
 # 🎵 AI Audio Studio
-<img src="https://github.com/SUmmerLunchhh/AAA-/blob/main/imgs/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202026-09-13%20124308.png" height="200">
+<img src="https://github.com/SUmmerLunchhh/AAA-/blob/main/imgs/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202026-09-13%20124308.png" height="300">
 <div align="center">
 
 A modern desktop-class AI audio processing studio built with **PyQt6**, **Demucs**, and the **AudD API**, featuring a built-in PowerShell terminal.
