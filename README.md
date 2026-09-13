@@ -2,20 +2,20 @@
 
 <div align="center">
 
-A modern, customizable desktop AI audio processing studio built with **PyQt6**, **Demucs**, and **AudD API**, featuring a built-in PowerShell terminal.
+A modern desktop-class AI audio processing studio built with **PyQt6**, **Demucs**, and the **AudD API**, featuring a built-in PowerShell terminal.
 
 </div>
 
 ---
 
-## ✨ Features
+## ✨ Core Features
 
-- **🎤 Vocal & Accompaniment Separation**: Powered by Meta's Demucs AI model for fast, high-quality two-stem separation.
-- **🎛️ Multi-Stem Splitting (4-Stems)**: Split songs into Vocals, Drums, Bass, and Other tracks in batches.
-- **🔍 System Audio Recognition**: Integrated with sounddevice and AudD API to capture and identify playing music from your PC in real-time.
-- **💻 Integrated Terminal**: A persistent, transparent, and secure PowerShell terminal built right into the interface with auto-clearing path optimization.
-- **🎨 Custom Aesthetics**: Supports customizable blur/glass-morphism themes, dynamic skin backgrounds, and custom UI style switching.
-- **🚀 Frameless Design**: Custom window controls with smooth drag-and-drop movement.
+- **🎤 Vocal & Accompaniment Separation**: Powered by Meta's Demucs AI model for high-quality two-track rapid separation.
+- **🎛️ Multi-track Stem Splitting**: Supports one-click batch splitting of songs into Vocals, Drums, Bass, and Other tracks.
+- **🔍 System Audio Recognition**: Integrated with `sounddevice` and the AudD API to capture and identify computer audio in real time.
+- **💻 Built-in Terminal**: An embedded, persistent, semi-transparent PowerShell terminal with smart path shortening.
+- **🎨 Aesthetic Design**: Supports Gaussian blur/frosted glass effects, dynamic backgrounds, and custom UI skins.
+- **🚀 Borderless Interactive Experience**: Custom window controls with smooth window dragging support.
 
 ---
 
@@ -23,14 +23,20 @@ A modern, customizable desktop AI audio processing studio built with **PyQt6**, 
 
 - **UI Framework**: [PyQt6](https://pypi.org/project/PyQt6/)
 - **AI Audio Separation**: [Demucs](https://github.com/facebookresearch/demucs) (PyTorch)
-- **Audio Capture**: `sounddevice`, `numpy`, `wave`
-- **Recognition API**: AudD Music Recognition API
+- **Audio Processing**: `sounddevice`, `numpy`, `wave`
+- **Music Recognition**: AudD Music Recognition API
 
 ---
 
-## 🚀 Quick Start
+## 🚀 Quick Start Guide
 
 ### 1. Clone the Repository
 ```bash
 git clone [https://github.com/SummerLunchhh/AudioSplitter.git](https://github.com/SummerLunchhh/AudioSplitter.git)
 cd AudioSplitter
+```
+### 2. Install and Configure [FFmpeg](https://ffmpeg.org/)
+### 3.Install Dependencies and Run Packaging in the Downloaded Folder
+```powershell 
+$ffmpegPath = (Get-ChildItem -Path "C:\Users\$env:USERNAME\AppData" -Filter "ffmpeg.exe" -Recurse -ErrorAction SilentlyContinue \vert{} Select-Object -ExpandProperty FullName -First 1); pyinstaller --noconfirm --onedir --windowed -n "AudioSplitter" --icon="my_app.ico" --add-binary "$ffmpegPath;." --collect-all torch --collect-all demucs --collect-all sounddevice --noupx app.py
+```
