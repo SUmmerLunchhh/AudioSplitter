@@ -1,5 +1,5 @@
 # 🎵 AI Audio Studio (AI 音频工作室)
-
+<img src="https://github.com/SUmmerLunchhh/AAA-/blob/main/imgs/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202026-09-13%20124308.png" height="200">
 <div align="center">
 
 基于 **PyQt6**、**Demucs** 和 **AudD API** 构建的现代桌面端 AI 音频处理工作室，内置 PowerShell 终端。
