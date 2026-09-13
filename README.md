@@ -1,6 +1,6 @@
 # 🎵 AI Audio Studio
 <p align="center">
-  <img src="[url1](https://github.com/SUmmerLunchhh/AAA-/blob/main/imgs/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202026-09-13%20124308.png)" width="50%" />
+  <img src="[url1](https://github.com/SUmmerLunchhh/AAA-/blob/main/imgs/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202026-09-13%20124308.png)" height="300" />
 </p>
 <div align="center">
 
