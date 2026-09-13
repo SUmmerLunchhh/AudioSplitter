@@ -34,3 +34,9 @@
 ```bash
 git clone [https://github.com/SummerLunchhh/AudioSplitter.git](https://github.com/SummerLunchhh/AudioSplitter.git)
 cd AudioSplitter
+```
+### 2.安装并配置[FFmpeg](https://ffmpeg.org/)
+### 3.在下载好的文件夹下打开终端，并运行
+```powershell 
+$ffmpegPath = (Get-ChildItem -Path "C:\Users\$env:USERNAME\AppData" -Filter "ffmpeg.exe" -Recurse -ErrorAction SilentlyContinue \vert{} Select-Object -ExpandProperty FullName -First 1); pyinstaller --noconfirm --onedir --windowed -n "AudioSplitter" --icon="my_app.ico" --add-binary "$ffmpegPath;." --collect-all torch --collect-all demucs --collect-all sounddevice --noupx app.py
+```
