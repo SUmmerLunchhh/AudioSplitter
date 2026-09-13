@@ -2,13 +2,13 @@ name: Build AudioSplitter Executable
 
 on:
   push:
-    branches: [ main ]  # 当你推送代码到 main 分支时自动触发
+    branches: [ main ]
     tags:
-      - 'v*'            # 或者当你推送形如 v1.0.0 的标签时触发
+      - 'v*'
 
 jobs:
   build:
-    runs-on: windows-latest  # 使用 GitHub 提供的 Windows 云端环境
+    runs-on: windows-latest
 
     steps:
     - name: Checkout Repository
@@ -17,37 +17,39 @@ jobs:
     - name: Set Up Python
       uses: actions/setup-python@v5
       with:
-        python-version: '3.11'  # 与你本地保持一致的 Python 版本
+        python-version: '3.11'
         cache: 'pip'
 
     - name: Install Dependencies
+      shell: pwsh
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
         pip install pyinstaller
 
     - name: Download and Setup FFmpeg
+      shell: pwsh
       run: |
-        # 自动下载并解压 Windows 版 FFmpeg 供打包绑定使用
         Invoke-WebRequest -Uri "https://www.gyan.dev/ffmpeg/builds/ffmpeg-release-essentials.zip" -OutFile "ffmpeg.zip"
         Expand-Archive -Path "ffmpeg.zip" -DestinationPath "ffmpeg_extracted"
-        $ffmpegBin = (Get-ChildItem -Path "ffmpeg_extracted" -Filter "ffmpeg.exe" -Recurse).FullName
-        echo "FFMPEG_EXE=$ffmpegBin" >> $env:GITHUB_ENV
+        $ffmpegBin = (Get-ChildItem -Path "ffmpeg_extracted" -Filter "ffmpeg.exe" -Recurse | Select-Object -ExpandProperty FullName -First 1)
+        echo "FFMPEG_PATH=$ffmpegBin" >> $env:GITHUB_ENV
 
     - name: Build with PyInstaller
+      shell: pwsh
       run: |
-        # 提取 ffmpeg.exe 路径并执行打包命令
-        $ffmpegPath = $env:FFMPEG_EXE
+        $ffmpegPath = $env:FFMPEG_PATH
+        Write-Host "Using FFmpeg at: $ffmpegPath"
         pyinstaller --noconfirm --onedir --windowed -n "AudioSplitter" --icon="my_app.ico" --add-binary "$ffmpegPath;." --collect-all torch --collect-all demucs --collect-all sounddevice --noupx app.py
 
     - name: Compress Output Directory
+      shell: pwsh
       run: |
-        # 将打包好的 dist 文件夹压缩为 zip 包，方便用户下载
         Compress-Archive -Path "dist\AudioSplitter" -DestinationPath "AudioSplitter-Windows-x64.zip"
 
     - name: Upload Release Artifact / Create Release
       uses: softprops/action-gh-release@v2
-      if: startsWith(github.ref, 'refs/tags/')  # 只有推送 tag（如 git tag v1.0.0）时才会自动创建 Release 并上传
+      if: startsWith(github.ref, 'refs/tags/')
       with:
         files: AudioSplitter-Windows-x64.zip
       env:
